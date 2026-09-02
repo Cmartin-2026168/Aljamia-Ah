@@ -1,0 +1,133 @@
+/*
+ * Aljamizado — hoja de estilos
+ * Estética: constructivismo ruso llevado a lo minimal.
+ *   - Paleta cerrada: crema (fondo), negro (estructura), rojo (acento/acción).
+ *   - Sin esquinas redondeadas: bloques planos y bordes gruesos en vez de sombras.
+ *   - Tipografía en mayúsculas y peso alto para los rótulos, como carteles de propaganda.
+ */
+
+* {
+    -fx-accent: #C1272D;
+}
+
+.root-pane {
+    -fx-background-color: #F2EEE4;
+}
+
+/* ---------- Cabecera ---------- */
+
+.header {
+    -fx-min-height: 84;
+    -fx-pref-height: 84;
+    -fx-background-color: #C1272D;
+}
+
+/* franja negra sólida a la izquierda, referencia directa al cartel constructivista */
+.header-block {
+    -fx-background-color: #111111;
+    -fx-min-width: 26;
+    -fx-pref-width: 26;
+    -fx-max-width: 26;
+    -fx-pref-height: 84;
+}
+
+.title-label {
+    -fx-text-fill: #F2EEE4;
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Arial Black", "Arial", sans-serif;
+    -fx-padding: 0 0 0 42;
+}
+
+.subtitle-label {
+    -fx-text-fill: #111111;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 16 8 0;
+}
+
+/* ---------- Cuerpo ---------- */
+
+.content {
+    -fx-background-color: #F2EEE4;
+}
+
+.field-label {
+    -fx-text-fill: #111111;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.field-label-accent {
+    -fx-text-fill: #C1272D;
+}
+
+/* ---------- Controles ---------- */
+
+.combo-box {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 0;
+    -fx-border-color: #111111;
+    -fx-border-width: 2;
+    -fx-font-size: 13px;
+    -fx-mark-color: #111111;
+}
+
+.combo-box .list-cell {
+    -fx-text-fill: #111111;
+    -fx-font-weight: bold;
+    -fx-background-color: transparent;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #111111;
+    -fx-border-width: 2;
+}
+
+.combo-box-popup .list-cell:filled:hover {
+    -fx-background-color: #C1272D;
+    -fx-text-fill: #F2EEE4;
+}
+
+.btn-primary {
+    -fx-background-color: #111111;
+    -fx-background-radius: 0;
+    -fx-text-fill: #F2EEE4;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 10 0 10 0;
+    -fx-border-color: #C1272D;
+    -fx-border-width: 3;
+    -fx-cursor: hand;
+}
+
+.btn-primary:hover {
+    -fx-background-color: #C1272D;
+    -fx-border-color: #111111;
+}
+
+.btn-primary:pressed,
+.btn-primary:armed {
+    -fx-background-color: #8F1C20;
+    -fx-border-color: #111111;
+}
+
+.text-input,
+.text-output {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 0;
+    -fx-border-color: #111111;
+    -fx-border-width: 2;
+    -fx-font-size: 13px;
+    -fx-font-family: "Consolas", "Menlo", monospace;
+}
+
+.text-input .content,
+.text-output .content {
+    -fx-background-color: #FFFFFF;
+}
+
+.text-output {
+    -fx-border-color: #C1272D;
+}

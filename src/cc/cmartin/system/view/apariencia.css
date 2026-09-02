@@ -1,0 +1,142 @@
+/* ============================================================
+   ALJAMIZADO — Tema "Convivencia"
+   Paleta inspirada en el esplendor de al-Ándalus, donde
+   islam, judaísmo y cristianismo compartieron un mismo
+   territorio cultural. Tres acentos en armonía cromática:
+
+     · Teal profundo   -> azulejos nazaríes / arquitectura islámica
+     · Oro viejo        -> manuscritos hebreos iluminados / orfebrería
+     · Granate           -> códices mozárabes / miniatura cristiana
+     · Pergamino        -> fondo neutro, papel de manuscrito
+   ============================================================ */
+
+.root-pane {
+    -fx-background-color: #F1E7CE; /* pergamino envejecido */
+}
+
+
+.header {
+    -fx-min-height: 84;
+    -fx-pref-height: 84;
+    -fx-background-color: #14555A; /* teal profundo, azulejo nazarí */
+    -fx-border-width: 0 0 3 0;
+}
+
+
+.header-block {
+    -fx-background-color: #C08A28; /* bloque de oro, remite a orfebrería */
+    -fx-min-width: 26;
+    -fx-pref-width: 26;
+    -fx-max-width: 26;
+    -fx-pref-height: 84;
+}
+
+.title-label {
+    -fx-text-fill: #F6ECD3;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Palatino Linotype", "Book Antiqua", "Georgia", serif;
+    -fx-padding: 0 0 0 42;
+}
+
+.subtitle-label {
+    -fx-text-fill: #C08A28;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 16 8 0;
+}
+
+
+.content {
+    -fx-background-color: #F1E7CE;
+}
+
+.field-label {
+    -fx-text-fill: #14555A; /* teal, hace de hilo conductor con la cabecera */
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.field-label-accent {
+    -fx-text-fill: #7A1F2B; /* granate, segundo acento */
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+
+.combo-box {
+    -fx-background-color: #FBF6E8;
+    -fx-background-radius: 0;
+    -fx-border-color: #14555A;
+    -fx-border-width: 2;
+    -fx-font-size: 13px;
+    -fx-mark-color: #7A1F2B;
+}
+
+.combo-box .list-cell {
+    -fx-text-fill: #201B12;
+    -fx-font-weight: bold;
+    -fx-background-color: transparent;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: #FBF6E8;
+    -fx-border-color: #14555A;
+    -fx-border-width: 2;
+}
+
+.combo-box-popup .list-cell:filled:hover {
+    -fx-background-color: #C08A28;
+    -fx-text-fill: #201B12;
+}
+
+.btn-primary {
+    -fx-background-color: #7A1F2B; /* granate, color regio */
+    -fx-background-radius: 0;
+    -fx-text-fill: #F6ECD3;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 10 0 10 0;
+    -fx-border-color: #C08A28; /* filete de oro */
+    -fx-border-width: 3;
+    -fx-cursor: hand;
+}
+
+.btn-primary:hover {
+    -fx-background-color: #C08A28;
+    -fx-text-fill: #201B12;
+    -fx-border-color: #14555A;
+}
+
+.btn-primary:pressed,
+.btn-primary:armed {
+    -fx-background-color: #5C1620;
+    -fx-border-color: #14555A;
+}
+
+.text-input,
+.text-output,
+.imput-container {
+    -fx-background-color: #FBF6E8;
+    -fx-background-radius: 0;
+    -fx-border-color: #14555A;
+    -fx-border-width: 2;
+    -fx-font-size: 13px;
+    -fx-font-family: "Consolas", "Menlo", monospace;
+}
+
+.text-input .content,
+.text-output .content,
+.imput-container .content {
+    -fx-background-color: #FBF6E8;
+}
+
+.text-output {
+    -fx-border-color: #7A1F2B; /* granate marca el resultado, distinto del origen en teal */
+}
+
+.circulo {
+    -fx-fill: #F6ECD3;      /* pergamino claro, como un sello o medallón */
+    -fx-stroke: #C08A28;    /* borde en oro viejo */
+    -fx-stroke-width: 3;
+}
