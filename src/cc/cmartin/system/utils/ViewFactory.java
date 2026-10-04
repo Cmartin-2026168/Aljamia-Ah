@@ -41,7 +41,7 @@ public class ViewFactory {
             Scene escena = null;
             switch (nombreVista) {
                 case "Main-Menu" -> {
-                    escena = cargarArchivoView("MainMenu.fxml", 400, 550);
+                    escena = cargarArchivoView("MainMenu.fxml", 1280, 760);
                     SceneManager.getInstanciaSceneManager().cambiarEscena(escena);
                 }
             }

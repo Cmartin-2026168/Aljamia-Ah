@@ -1,16 +1,18 @@
 package cc.cmartin.system.model;
 
 public enum Script {
-    ESPAÑOL, 
-    CASTELLANO, 
-    ARABE, 
-    HEBREO; 
+    ESPAÑOL("Español"),
+    ARABE("Árabe (aljamía)"),
+    HEBREO("Hebreo (Ladino)");
 
-    public boolean esVarianteLatina() {
-        return this == ESPAÑOL || this == CASTELLANO;
-        
-        
-        
-        
+    private final String etiqueta;
+
+    Script(String etiqueta) {
+        this.etiqueta = etiqueta;
+    }
+
+    @Override
+    public String toString() {
+        return etiqueta;
     }
 }

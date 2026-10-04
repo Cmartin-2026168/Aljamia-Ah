@@ -1,6 +1,8 @@
 package cc.cmartin.system.utils;
 
+import cc.cmartin.system.Main;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class SceneManager {
@@ -21,6 +23,14 @@ public class SceneManager {
     public void cambiarEscena(Scene escena) {
         try {
             escenarioPrincipal.setScene(escena);
+            escenarioPrincipal.setTitle("Aljamizado");
+            escenarioPrincipal.setMinWidth(1000);
+            escenarioPrincipal.setMinHeight(600);
+            if (escenarioPrincipal.getIcons().isEmpty()) {
+                escenarioPrincipal.getIcons().add(new Image(
+                        Main.class.getResourceAsStream(
+                                "/cc/cmartin/system/view/image/Abrahamic.png")));
+            }
             escenarioPrincipal.sizeToScene();
             escenarioPrincipal.show();
 

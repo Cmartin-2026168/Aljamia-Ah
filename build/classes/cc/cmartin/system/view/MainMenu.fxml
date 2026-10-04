@@ -7,62 +7,83 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
 
-<VBox prefHeight="580.0" prefWidth="394.0" spacing="0" styleClass="root-pane" stylesheets="@apariencia.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cc.cmartin.system.controller.MainMenuController">
+<VBox minHeight="600.0" minWidth="1000.0" prefHeight="760.0" prefWidth="1280.0" spacing="0" styleClass="root-pane" stylesheets="@apariencia.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cc.cmartin.system.controller.MainMenuController">
 
-    <!-- Cabecera: bloque tipográfico plano + franja negra, típico del cartelismo constructivista -->
-    <StackPane minHeight="57.0" prefHeight="57.0" prefWidth="402.0" styleClass="header">
-        <Region prefHeight="66.0" styleClass="header-block" StackPane.alignment="TOP_LEFT" />
-        <Label alignment="TOP_LEFT" contentDisplay="TOP" nodeOrientation="LEFT_TO_RIGHT" prefHeight="70.0" prefWidth="203.0" styleClass="title-label" text="ALJAMIZADO" StackPane.alignment="CENTER_LEFT" />
-        <Label styleClass="subtitle-label" text="ES ⇄ ARABE ⇄ HEBREO" StackPane.alignment="BOTTOM_RIGHT" />
-      <Circle fill="DODGERBLUE" radius="36.0" stroke="BLACK" strokeType="INSIDE" styleClass="circulo" />
-      <ImageView fitHeight="61.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@image/Abrahamic.png" />
-         </image>
-      </ImageView>
-    </StackPane>
+    <!-- ============ CABECERA ============ -->
+    <HBox alignment="CENTER_LEFT" minHeight="100.0" prefHeight="100.0" spacing="20" styleClass="header">
+        <StackPane fx:id="medallon" styleClass="medallon-marco">
+            <ImageView fitHeight="56.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@image/Abrahamic.png" />
+                </image>
+            </ImageView>
+        </StackPane>
 
-    <VBox prefHeight="520.0" prefWidth="402.0" spacing="18" styleClass="content">
+        <VBox fx:id="bloqueTitulo" alignment="CENTER_LEFT" spacing="4">
+            <Label styleClass="title-label" text="Aljamizado" />
+            <Label styleClass="subtitle-label" text="Del español al árabe y al hebreo" />
+        </VBox>
+    </HBox>
+
+    <!-- Franja de cuatro tintas, tramos iguales -->
+    <HBox styleClass="franja">
+        <Region maxWidth="Infinity" prefWidth="100.0" styleClass="franja-oro" HBox.hgrow="ALWAYS" />
+        <Region maxWidth="Infinity" prefWidth="100.0" styleClass="franja-verde" HBox.hgrow="ALWAYS" />
+        <Region maxWidth="Infinity" prefWidth="100.0" styleClass="franja-azul" HBox.hgrow="ALWAYS" />
+        <Region maxWidth="Infinity" prefWidth="100.0" styleClass="franja-rojo" HBox.hgrow="ALWAYS" />
+    </HBox>
+
+    <!-- ============ CONTENIDO: dos zonas ============ -->
+    <HBox spacing="32" styleClass="content" VBox.vgrow="ALWAYS">
         <padding>
-            <Insets bottom="20" left="20" right="20" top="20" />
+            <Insets bottom="32" left="48" right="48" top="32" />
         </padding>
 
-        <GridPane hgap="14" prefHeight="90.0" prefWidth="362.0" vgap="6">
-            <columnConstraints>
-                <ColumnConstraints percentWidth="50" />
-                <ColumnConstraints percentWidth="50" />
-            </columnConstraints>
+        <!-- ===== ZONA IZQUIERDA: transliterador ===== -->
+        <VBox minWidth="0.0" prefWidth="700.0" spacing="20" HBox.hgrow="ALWAYS" maxWidth="Infinity">
 
-            <Label styleClass="field-label" text="ORIGEN" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-            <Label styleClass="field-label" text="DESTINO" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            <!-- Selector de destino (vino) + acción principal -->
+            <HBox alignment="CENTER" spacing="20">
+                <VBox fx:id="panelSelector" maxWidth="Infinity" styleClass="selector-panel" HBox.hgrow="ALWAYS">
+                    <padding>
+                        <Insets bottom="12" left="18" right="18" top="12" />
+                    </padding>
+                    <HBox alignment="CENTER_LEFT" spacing="16">
+                        <Label styleClass="field-label" text="Escribir en" />
+                        <ComboBox fx:id="cmbAlfabetoDestino" maxWidth="Infinity" prefHeight="38.0" styleClass="combo-box" HBox.hgrow="ALWAYS" />
+                    </HBox>
+                </VBox>
 
-            <ComboBox fx:id="cmbAlfabetoInicial" maxWidth="Infinity" prefHeight="32.0" prefWidth="146.0" styleClass="combo-box" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-            <ComboBox fx:id="cmbAlfabetoDestino" maxWidth="Infinity" styleClass="combo-box" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Button fx:id="btnTransliterar" minWidth="190.0" onAction="#transliterar" prefWidth="200.0" styleClass="btn-primary" text="Transliterar" />
+            </HBox>
 
-            <Button fx:id="btnTransliterar" maxWidth="Infinity" onAction="#transliterar" styleClass="btn-primary" text="TRANSLITERAR →" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="2" />
-         <rowConstraints>
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-         </rowConstraints>
-        </GridPane>
+            <!-- Texto en español (oro) -->
+            <VBox fx:id="tarjetaOrigen" maxWidth="Infinity" spacing="10" styleClass="card, card-origin" VBox.vgrow="ALWAYS">
+                <Label styleClass="field-label" text="Texto en español" />
+                <TextArea fx:id="txtTexto" promptText="Escribe o pega aquí el texto que quieres transliterar…" styleClass="input-area" VBox.vgrow="ALWAYS" wrapText="true" />
+            </VBox>
 
-        <VBox spacing="6">
-            <Label styleClass="field-label" text="TEXTO ORIGINAL" />
-            <TextArea fx:id="txtTexto" prefHeight="130" promptText="Escribe aquí..." styleClass="imput-container" wrapText="true" />
+            <!-- Resultado (verde para árabe, azul para hebreo) -->
+            <VBox fx:id="tarjetaResultado" maxWidth="Infinity" spacing="10" styleClass="card, card-result-arabe" VBox.vgrow="ALWAYS">
+                <Label styleClass="field-label" text="Resultado" />
+                <TextArea fx:id="txtTextoTransliterado" editable="false" promptText="La transliteración aparecerá aquí." styleClass="output-area" VBox.vgrow="ALWAYS" wrapText="true" />
+            </VBox>
+
+            <Label styleClass="pie-label" text="Aljamía: español escrito con letras árabes o hebreas" />
         </VBox>
 
-        <VBox spacing="6">
-            <Label styleClass="field-label field-label-accent" text="RESULTADO" />
-            <TextArea fx:id="txtTextoTransliterado" editable="false" prefHeight="130" styleClass="text-output" wrapText="true" />
+        <!-- ===== ZONA DERECHA: espacio libre para agregar cosas ===== -->
+        <VBox fx:id="zonaLibre" maxWidth="Infinity" minWidth="0.0" prefWidth="480.0" spacing="16" styleClass="side-panel" HBox.hgrow="ALWAYS">
+            <padding>
+                <Insets bottom="18" left="18" right="18" top="16" />
+            </padding>
+            <Label styleClass="field-label" text="Espacio libre" />
+            <!-- Agrega aquí tus nuevos controles -->
         </VBox>
-    </VBox>
+    </HBox>
 </VBox>

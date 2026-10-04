@@ -1,142 +1,442 @@
 /* ============================================================
-   ALJAMIZADO — Tema "Convivencia"
-   Paleta inspirada en el esplendor de al-Ándalus, donde
-   islam, judaísmo y cristianismo compartieron un mismo
-   territorio cultural. Tres acentos en armonía cromática:
+   ALJAMIZADO — apariencia.css (v11)
+   Tema "Convivencia nocturna": plano, translúcido, esquinas rectas.
 
-     · Teal profundo   -> azulejos nazaríes / arquitectura islámica
-     · Oro viejo        -> manuscritos hebreos iluminados / orfebrería
-     · Granate           -> códices mozárabes / miniatura cristiana
-     · Pergamino        -> fondo neutro, papel de manuscrito
+   SECCIONES (orden alfabético):
+     1. Barra de desplazamiento
+     2. Base
+     3. Botón "Transliterar"
+     4. Cabecera
+     5. Campos de texto (común)
+     6. Combo de destino
+     7. Contenido (velo)
+     8. Etiquetas y pie
+     9. Fondo
+    10. Franja de colores
+    11. Medallón del logo
+    12. Panel selector
+    13. Resultado en árabe
+    14. Resultado en hebreo
+    15. Tarjetas (común)
+    16. Texto en español
+    17. Zona libre
+
+   COLORES
+     Oro #FFB52E · Esmeralda #19C79F · Zafiro #4C7DFF · Rubí #E8405F
+
+   TIPOGRAFÍA POR ALFABETO
+     Latino -> "Times New Roman"
+     Árabe  -> "Lateef"
+     Hebreo -> "Frank Ruhl Libre"
    ============================================================ */
 
-.root-pane {
-    -fx-background-color: #F1E7CE; /* pergamino envejecido */
+
+/* ============================================================
+   1. BARRA DE DESPLAZAMIENTO
+   ============================================================ */
+
+.scroll-bar .decrement-arrow,
+.scroll-bar .increment-arrow {
+    -fx-padding: 0;
+    -fx-shape: " ";
 }
 
-
-.header {
-    -fx-min-height: 84;
-    -fx-pref-height: 84;
-    -fx-background-color: #14555A; /* teal profundo, azulejo nazarí */
-    -fx-border-width: 0 0 3 0;
-}
-
-
-.header-block {
-    -fx-background-color: #C08A28; /* bloque de oro, remite a orfebrería */
-    -fx-min-width: 26;
-    -fx-pref-width: 26;
-    -fx-max-width: 26;
-    -fx-pref-height: 84;
-}
-
-.title-label {
-    -fx-text-fill: #F6ECD3;
-    -fx-font-size: 15px;
-    -fx-font-weight: bold;
-    -fx-font-family: "Palatino Linotype", "Book Antiqua", "Georgia", serif;
-    -fx-padding: 0 0 0 42;
-}
-
-.subtitle-label {
-    -fx-text-fill: #C08A28;
-    -fx-font-size: 13px;
-    -fx-font-weight: bold;
-    -fx-padding: 0 16 8 0;
-}
-
-
-.content {
-    -fx-background-color: #F1E7CE;
-}
-
-.field-label {
-    -fx-text-fill: #14555A; /* teal, hace de hilo conductor con la cabecera */
-    -fx-font-size: 11px;
-    -fx-font-weight: bold;
-}
-
-.field-label-accent {
-    -fx-text-fill: #7A1F2B; /* granate, segundo acento */
-    -fx-font-size: 11px;
-    -fx-font-weight: bold;
-}
-
-
-.combo-box {
-    -fx-background-color: #FBF6E8;
-    -fx-background-radius: 0;
-    -fx-border-color: #14555A;
-    -fx-border-width: 2;
-    -fx-font-size: 13px;
-    -fx-mark-color: #7A1F2B;
-}
-
-.combo-box .list-cell {
-    -fx-text-fill: #201B12;
-    -fx-font-weight: bold;
+.scroll-bar:horizontal,
+.scroll-bar:vertical {
     -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0 2 0 0;
 }
 
-.combo-box-popup .list-view {
-    -fx-background-color: #FBF6E8;
-    -fx-border-color: #14555A;
-    -fx-border-width: 2;
+.scroll-bar:horizontal {
+    -fx-pref-height: 9;
 }
 
-.combo-box-popup .list-cell:filled:hover {
-    -fx-background-color: #C08A28;
-    -fx-text-fill: #201B12;
+.scroll-bar:vertical {
+    -fx-pref-width: 9;
 }
+
+.scroll-bar > .decrement-button,
+.scroll-bar > .increment-button {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.scroll-bar > .thumb {
+    -fx-background-color: rgba(244,239,224,0.30);
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+}
+
+.scroll-bar > .thumb:hover {
+    -fx-background-color: rgba(255,181,46,0.85);
+}
+
+.scroll-bar > .thumb:pressed {
+    -fx-background-color: #FFB52E;
+}
+
+.scroll-bar > .track,
+.scroll-bar > .track-background {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-border-color: transparent;
+}
+
+
+/* ============================================================
+   2. BASE
+   Fuente latina por defecto para todo lo que no tenga una propia.
+   ============================================================ */
+
+* {
+    -fx-faint-focus-color: transparent;
+    -fx-focus-color: transparent;
+}
+
+.root {
+    -fx-font-family: "Times New Roman", "Times", serif;
+}
+
+
+/* ============================================================
+   3. BOTÓN "TRANSLITERAR"
+   ============================================================ */
 
 .btn-primary {
-    -fx-background-color: #7A1F2B; /* granate, color regio */
+    -fx-background-color: #FFB52E;
+    -fx-background-insets: 0;
     -fx-background-radius: 0;
-    -fx-text-fill: #F6ECD3;
-    -fx-font-weight: bold;
-    -fx-font-size: 14px;
-    -fx-padding: 10 0 10 0;
-    -fx-border-color: #C08A28; /* filete de oro */
-    -fx-border-width: 3;
     -fx-cursor: hand;
+    -fx-font-family: "Times New Roman", "Times", serif;
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-padding: 14 0 14 0;
+    -fx-text-fill: #1A1206;
+}
+
+.btn-primary:armed,
+.btn-primary:pressed {
+    -fx-background-color: #D99A1E;
 }
 
 .btn-primary:hover {
-    -fx-background-color: #C08A28;
-    -fx-text-fill: #201B12;
-    -fx-border-color: #14555A;
+    -fx-background-color: #FFC95C;
 }
 
-.btn-primary:pressed,
-.btn-primary:armed {
-    -fx-background-color: #5C1620;
-    -fx-border-color: #14555A;
+
+/* ============================================================
+   4. CABECERA (título, subtítulo y barra)
+   ============================================================ */
+
+.header {
+    -fx-background-color: rgba(5,24,30,0.78);
+    -fx-border-color: transparent transparent #FFB52E transparent;
+    -fx-border-width: 0 0 2 0;
+    -fx-padding: 0 28 0 28;
 }
 
-.text-input,
-.text-output,
-.imput-container {
-    -fx-background-color: #FBF6E8;
+.subtitle-label {
+    -fx-font-family: "Times New Roman", "Times", serif;
+    -fx-font-size: 14px;
+    -fx-font-style: italic;
+    -fx-text-fill: #FFB52E;
+}
+
+.title-label {
+    -fx-font-family: "Times New Roman", "Times", serif;
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFF4DA;
+}
+
+
+/* ============================================================
+   5. CAMPOS DE TEXTO (común a español y resultado)
+   ============================================================ */
+
+.input-area,
+.output-area {
+    -fx-background-color: rgba(3,6,14,0.50);
+    -fx-background-insets: 0;
     -fx-background-radius: 0;
-    -fx-border-color: #14555A;
-    -fx-border-width: 2;
-    -fx-font-size: 13px;
-    -fx-font-family: "Consolas", "Menlo", monospace;
+    -fx-border-color: rgba(255,255,255,0.14) rgba(255,255,255,0.14) rgba(255,255,255,0.14) #FFB52E;
+    -fx-border-radius: 0;
+    -fx-border-width: 1 1 1 5;
+    -fx-control-inner-background: transparent;
+    -fx-font-family: "Times New Roman", "Times", serif;
+    -fx-font-size: 18px;
+    -fx-highlight-fill: rgba(255,181,46,0.55);
+    -fx-highlight-text-fill: white;
+    -fx-padding: 0;
+    -fx-prompt-text-fill: rgba(244,239,224,0.40);
+    -fx-text-fill: #F4EFE0;
 }
 
-.text-input .content,
-.text-output .content,
-.imput-container .content {
-    -fx-background-color: #FBF6E8;
+.input-area:focused,
+.output-area:focused {
+    -fx-background-color: rgba(3,6,14,0.72);
 }
 
-.text-output {
-    -fx-border-color: #7A1F2B; /* granate marca el resultado, distinto del origen en teal */
+.text-area .content {
+    -fx-background-color: transparent;
+    -fx-padding: 12 10 12 14;
 }
 
-.circulo {
-    -fx-fill: #F6ECD3;      /* pergamino claro, como un sello o medallón */
-    -fx-stroke: #C08A28;    /* borde en oro viejo */
-    -fx-stroke-width: 3;
+.text-area .scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.text-area .scroll-pane > .corner {
+    -fx-background-color: transparent;
+}
+
+.text-area .scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+
+/* ============================================================
+   6. COMBO DE DESTINO
+   ============================================================ */
+
+.combo-box {
+    -fx-background-color: rgba(4,8,18,0.55);
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-border-color: rgba(232,64,95,0.40) rgba(232,64,95,0.40) rgba(232,64,95,0.40) #E8405F;
+    -fx-border-radius: 0;
+    -fx-border-width: 1 1 1 5;
+    -fx-font-family: "Times New Roman", "Times", serif;
+    -fx-font-size: 16px;
+    -fx-mark-color: #FF8FA6;
+}
+
+.combo-box .arrow {
+    -fx-background-color: #FF8FA6;
+}
+
+.combo-box .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.combo-box .list-cell {
+    -fx-background-color: transparent;
+    -fx-font-family: "Times New Roman", "Times", serif;
+    -fx-font-weight: bold;
+    -fx-text-fill: #F4EFE0;
+}
+
+.combo-box-popup .list-cell {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-font-family: "Times New Roman", "Times", serif;
+    -fx-font-size: 16px;
+    -fx-padding: 8 12 8 12;
+    -fx-text-fill: #F4EFE0;
+}
+
+.combo-box-popup .list-cell:filled:hover,
+.combo-box-popup .list-cell:filled:selected {
+    -fx-background-color: rgba(232,64,95,0.40);
+    -fx-text-fill: white;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: rgba(10,14,28,0.96);
+    -fx-background-radius: 0;
+    -fx-border-color: #E8405F;
+    -fx-border-radius: 0;
+    -fx-border-width: 1;
+    -fx-padding: 0;
+}
+
+.combo-box:hover,
+.combo-box:showing {
+    -fx-background-color: rgba(40,10,24,0.75);
+}
+
+
+/* ============================================================
+   7. CONTENIDO (velo nocturno sobre el fondo)
+   Sube el último número para oscurecer el fondo; bájalo para verlo más.
+   ============================================================ */
+
+.content {
+    -fx-background-color: rgba(4,8,18,0.22);
+}
+
+
+/* ============================================================
+   8. ETIQUETAS Y PIE
+   El color de cada etiqueta lo define la sección de su campo.
+   ============================================================ */
+
+.field-label {
+    -fx-font-family: "Times New Roman", "Times", serif;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #F4EFE0;
+}
+
+.pie-label {
+    -fx-font-family: "Times New Roman", "Times", serif;
+    -fx-font-size: 12px;
+    -fx-font-style: italic;
+    -fx-text-fill: rgba(244,239,224,0.65);
+}
+
+
+/* ============================================================
+   9. FONDO
+   Quita las líneas de imagen si no quieres usar fondo.jpg.
+   ============================================================ */
+
+.root-pane {
+    -fx-background-color: #0B1424;
+    -fx-background-image: url("image/fondo.jpg");
+    -fx-background-position: center center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+}
+
+
+/* ============================================================
+   10. FRANJA DE COLORES (cuatro tramos iguales)
+   ============================================================ */
+
+.franja {
+    -fx-max-height: 4;
+    -fx-min-height: 4;
+    -fx-pref-height: 4;
+}
+
+.franja-azul  { -fx-background-color: #4C7DFF; }
+.franja-oro   { -fx-background-color: #FFB52E; }
+.franja-rojo  { -fx-background-color: #E8405F; }
+.franja-verde { -fx-background-color: #19C79F; }
+
+
+/* ============================================================
+   11. MEDALLÓN DEL LOGO (circular, anillo de oro y fondo crema)
+   Para fondo oscuro, cambia el segundo color por rgba(10,14,28,0.80).
+   ============================================================ */
+
+.medallon-marco {
+    -fx-background-color: #FFB52E, #F3ECDD;
+    -fx-background-insets: 0, 3;
+    -fx-background-radius: 36, 33;
+    -fx-max-height: 72;
+    -fx-max-width: 72;
+    -fx-min-height: 72;
+    -fx-min-width: 72;
+    -fx-pref-height: 72;
+    -fx-pref-width: 72;
+}
+
+
+/* ============================================================
+   12. PANEL SELECTOR (rubí)
+   ============================================================ */
+
+.selector-panel {
+    -fx-background-color: rgba(232,64,95,0.85), rgba(10,14,28,0.62);
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 0;
+}
+
+.selector-panel .field-label {
+    -fx-text-fill: #FF8FA6;
+}
+
+
+/* ============================================================
+   13. RESULTADO EN ÁRABE (esmeralda, fuente Traditional Arabic)
+   Se activa cuando el controlador pone la clase card-result-arabe.
+   ============================================================ */
+
+.card-result-arabe {
+    -fx-background-color: rgba(25,199,159,0.85), rgba(10,14,28,0.62);
+    -fx-background-insets: 0, 1;
+}
+
+.card-result-arabe .field-label {
+    -fx-text-fill: #4FE3C1;
+}
+
+.card-result-arabe .output-area {
+    -fx-border-color: rgba(25,199,159,0.35) rgba(25,199,159,0.35) rgba(25,199,159,0.35) #19C79F;
+    -fx-font-family: "Lateef", "Simplified Arabic", "Arial", sans-serif;
+    -fx-font-size: 26px;
+    -fx-highlight-fill: rgba(25,199,159,0.55);
+}
+
+
+/* ============================================================
+   14. RESULTADO EN HEBREO (zafiro, fuente David)
+   Se activa cuando el controlador pone la clase card-result-hebreo.
+   ============================================================ */
+
+.card-result-hebreo {
+    -fx-background-color: rgba(76,125,255,0.90), rgba(10,14,28,0.62);
+    -fx-background-insets: 0, 1;
+}
+
+.card-result-hebreo .field-label {
+    -fx-text-fill: #8FB4FF;
+}
+
+.card-result-hebreo .output-area {
+    -fx-border-color: rgba(76,125,255,0.40) rgba(76,125,255,0.40) rgba(76,125,255,0.40) #4C7DFF;
+    -fx-font-family: "Frank Ruhl Libre", "Times New Roman", serif;
+    -fx-font-size: 24px;
+    -fx-highlight-fill: rgba(76,125,255,0.55);
+}
+
+
+/* ============================================================
+   15. TARJETAS (común a español y resultado)
+   ============================================================ */
+
+.card {
+    -fx-background-radius: 0;
+    -fx-padding: 16 18 18 18;
+}
+
+
+/* ============================================================
+   16. TEXTO EN ESPAÑOL (oro, fuente latina)
+   ============================================================ */
+
+.card-origin {
+    -fx-background-color: rgba(255,181,46,0.85), rgba(10,14,28,0.62);
+    -fx-background-insets: 0, 1;
+}
+
+.card-origin .field-label {
+    -fx-text-fill: #FFC95C;
+}
+
+.card-origin .input-area {
+    -fx-border-color: rgba(255,181,46,0.35) rgba(255,181,46,0.35) rgba(255,181,46,0.35) #FFB52E;
+}
+
+
+/* ============================================================
+   17. ZONA LIBRE (casi transparente, leve tono amarillento)
+   Para quitar la línea del borde, deja solo el segundo color
+   y pon -fx-background-insets: 0.
+   ============================================================ */
+
+.side-panel {
+    -fx-background-color: rgba(255,181,46,0.35), rgba(255,181,46,0.06);
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 0;
+}
+
+.side-panel .field-label {
+    -fx-text-fill: #FFC95C;
 }

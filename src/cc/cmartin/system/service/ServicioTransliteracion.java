@@ -1,6 +1,6 @@
 package cc.cmartin.system.service;
 
-import cc.cmartin.system.repository.MotorLatino;
+import cc.cmartin.system.repository.MotorEspanol;
 import cc.cmartin.system.repository.MotorAljamiaHebrea;
 import cc.cmartin.system.repository.MotorAljamiaArabe;
 import cc.cmartin.system.repository.MotorTransliteracion;
@@ -16,11 +16,10 @@ public class ServicioTransliteracion {
     private final Map<Script, MotorTransliteracion> motores = new EnumMap<>(Script.class);
 
     public ServicioTransliteracion() {
-        registrar(new MotorLatino(Script.ESPAÑOL));
-        registrar(new MotorLatino(Script.CASTELLANO));
-        registrar(new MotorAljamiaArabe());
-        registrar(new MotorAljamiaHebrea());
-    }
+    registrar(new MotorEspanol());
+    registrar(new MotorAljamiaArabe());
+    registrar(new MotorAljamiaHebrea());
+}
 
     private void registrar(MotorTransliteracion motor) {
         motores.put(motor.obtenerEscritura(), motor);
